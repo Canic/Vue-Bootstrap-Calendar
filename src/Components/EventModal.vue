@@ -136,10 +136,8 @@
                    description: this.eventDesc,
                    date: this.day.date._d
                });
-               
-               this.eventTitle = "";
-               this.eventDesc = "";
-               this.$emit(SHOW_ADD_EVENT_FORM, false);
+
+               this.cancel();
            },
 
            cancel () {
