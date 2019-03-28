@@ -4,7 +4,7 @@
             <div class="modal" @click.self="clickBackdrop">
                 <div class="modal-dialog" ref="dialog">
                     <div class="modal-content">
-                      
+
                         <div class="modal-header">
                             <button type="button" class="close" aria-label="Close" @click="cancel">
                                 <span aria-hidden="true">&times;</span>
@@ -54,22 +54,26 @@
        },
 
        created () {
-           if (this.show) 
-               document.body.className += ' modal-open';
+           if (this.show)
+               document.body.classList.add('modal-open');
+            else
+               document.body.classList.remove('moda-open');
        },
 
        beforeDestroy () {
-           document.body.className = document.body.className.replace(/\s?modal-open/, '');
+           document.body.classList.remove('modal-open');
        },
 
        watch: {
            show (value) {
                if (value) {
-                   document.body.className += ' modal-open';
+                   if (!document.body.classList.contains('modal-open')) {
+                       document.body.classList.add('modal-open');
+                   }
                }
            }
        },
-       
+
        methods: {
             deleteEvent () {
                 this.$emit(EVENT_DELETED, this.event);
@@ -85,7 +89,8 @@
             },
 
             closeModal() {
-                 this.$emit(SHOW_DETAILS_EVENT_MODAL, false)
+                document.body.classList.remove('modal-open');
+                this.$emit(SHOW_DETAILS_EVENT_MODAL, false)
             }
        }
     };

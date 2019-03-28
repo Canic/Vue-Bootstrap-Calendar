@@ -89,8 +89,8 @@
        },
 
        created () {
-            if (this.show) 
-                document.body.className += ' modal-open';
+            if (this.show)
+                document.body.classList.add('modal-open');
 
             if(this.$i18n) {
                 this.colors.push(
@@ -115,13 +115,15 @@
        },
 
        beforeDestroy () {
-           document.body.className = document.body.className.replace(/\s?modal-open/, '');
+           document.body.classList.remove('modal-open');
        },
 
        watch: {
            show (value) {
                if (value) {
-                   document.body.className += ' modal-open';
+                   if (!document.body.classList.contains('modal-open')) {
+                       document.body.classList.add('modal-open');
+                   }
                }
            }
        },
@@ -141,6 +143,7 @@
            },
 
            cancel () {
+               document.body.classList.remove('modal-open');
                this.eventTitle = "";
                this.eventDesc = "";
                this.$emit(SHOW_ADD_EVENT_FORM, false)
