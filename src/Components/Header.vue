@@ -83,6 +83,11 @@
                     console.warn('Please define global vue locale object named "i18n"!');
                 }
             }
+        },
+
+        mounted() {
+            this.localeSelect = this.locale;
+            this.setLocale();
         }
     }
 </script>
