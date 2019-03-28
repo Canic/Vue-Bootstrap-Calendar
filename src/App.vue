@@ -5,7 +5,6 @@
                 :all-events="events"
                 :canAddEvent="true"
                 :canDeleteEvent="true"
-                :dateLocale="'en'"
                 :displayWeekNumber="false"
                 @eventAdded="eventAdded"
                 @eventDeleted="eventDeleted"
