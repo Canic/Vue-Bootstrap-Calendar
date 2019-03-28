@@ -31,7 +31,7 @@
                                         <span v-else>Event Color:</span>
                                     </label>
                                     <select v-model="eventColor" class="form-control" id="event-color">
-                                        <option v-for="color in colors" v-bind:value="color.value">
+                                        <option v-for="(color, key) in colors" v-bind:key="key" v-bind:value="color.value">
                                             {{ color.text }}
                                         </option>
                                     </select>
